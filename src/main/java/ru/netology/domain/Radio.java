@@ -96,23 +96,27 @@ public class Radio {
 
 
     public void setMaxChannel(int maxChannel) {
+
         this.maxChannel = maxChannel;
     }
 
 
 
     public void setMinChannel(int minChannel) {
+
         this.minChannel = minChannel;
     }
 
 
 
     public void setMaxVolume(int maxVolume) {
+
         this.maxVolume = maxVolume;
     }
 
 
     public void setMinVolume(int minVolume) {
+
         this.minVolume = minVolume;
     }
 }

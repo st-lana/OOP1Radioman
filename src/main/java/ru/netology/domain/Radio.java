@@ -4,82 +4,28 @@ public class Radio {
 
     private int currentChannel;
     private int currentVolume;
-    private int maxChannel;
-    private int minChannel;
-    private int maxVolume;
-    private int minVolume;
 
-    public int increaseVolume(int[] volumePositions) {
-        int currentVolume = volumePositions[0];
-        for (int volumePosition : volumePositions) {
-            if (currentVolume < 10) {
-                currentVolume++;
-            } else {
-                currentVolume = 10;
-            }
+
+
+    public void increaseVolume1point() {
+        if (currentVolume < 10) {
+            currentVolume = currentVolume + 1;
         }
-        return currentVolume;
     }
 
-
-    public int decreaseVolume(int[] volumePositions) {
-        int currentVolume = volumePositions[0];
-        for (int volumePosition : volumePositions) {
-            if (currentVolume > 0) {
-                currentVolume--;
-            } else {
-                currentVolume = 0;
-            }
-
-
+    public void decreaseVolume1point() {
+        if (currentVolume > 0) {
+            currentVolume--;
         }
-        return currentVolume;
     }
 
-    public int makeNextChannel(int[] channelPositions) {
-        int currentChannel = channelPositions[0];
-        for (int channelPosition : channelPositions) {
-            if (currentChannel < 9) {
-                currentChannel++;
-            } else {
-                currentChannel = 1;
-
-            }
-        }
-        return currentChannel;
-
-    }
-
-    public int makePreviousChannel(int[] channelPositions) {
-        int currentChannel = channelPositions[0];
-        for (int channelPosition : channelPositions) {
-            if (channelPosition > 1) {
-                currentChannel--;
-            } else {
-                currentChannel = 9;
-            }
-        }
-        return currentChannel;
-
-    }
-
-
-    public void setCurrentChannel(int currentChannel) {
-        if (currentChannel > maxChannel) {
-            return;
-        }
-        if (currentChannel < minChannel) {
-            return;
-        }
-        this.currentChannel = currentChannel;
-    }
 
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume > maxVolume) {
+        if (currentVolume > 10) {
             return;
         }
-        if (currentVolume < minVolume) {
+        if (currentVolume < 0) {
             return;
         }
         this.currentVolume = currentVolume;
@@ -88,35 +34,31 @@ public class Radio {
     public int getCurrentChannel() {
         return currentChannel;
     }
-
+//
     public int getCurrentVolume() {
         return currentVolume;
     }
+    public void setCurrentChannel(int currentChannel) {
+        if (currentChannel < 0) {
+            return;
+        }
+        if (currentChannel > 9) {
+            currentChannel = 9;
+        }
+        this.currentChannel = currentChannel;
+    }
 
+    public void putNextChannel() {
+        if (currentChannel < 9) {
+            currentChannel++;
+        }
+    }
 
-
-    public void setMaxChannel(int maxChannel) {
-
-        this.maxChannel = maxChannel;
+    public void putPreviousChannel() {
+        if (currentChannel > 0) {
+            currentChannel--;
+        }
     }
 
 
-
-    public void setMinChannel(int minChannel) {
-
-        this.minChannel = minChannel;
-    }
-
-
-
-    public void setMaxVolume(int maxVolume) {
-
-        this.maxVolume = maxVolume;
-    }
-
-
-    public void setMinVolume(int minVolume) {
-
-        this.minVolume = minVolume;
-    }
 }

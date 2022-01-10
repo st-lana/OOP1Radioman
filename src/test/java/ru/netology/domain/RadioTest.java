@@ -160,7 +160,7 @@ class RadioTest {
     }
 
    @Test
-    public void shouldPutNextChannelPositiveTest() {
+    public void shouldPutNextChannel() {
         Radio radio = new Radio();
         radio.setCurrentChannel(8);
         radio.putNextChannel();
@@ -168,12 +168,13 @@ class RadioTest {
    }
 
     @Test
-    public void shouldPutNextChannelNegativeTest() {
+    public void shouldPutNextChannelOnMaxPosition() {
         Radio radio = new Radio();
         radio.setCurrentChannel(9);
         radio.putNextChannel();
-        assertEquals(9, radio.getCurrentChannel());
+        assertEquals(0, radio.getCurrentChannel());
     }
+
     @Test
     public void shouldPutPrevChannePositiveTest() {
         Radio radio = new Radio();
@@ -187,7 +188,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentChannel(0);
         radio.putPreviousChannel();
-        assertEquals(0, radio.getCurrentChannel());
+        assertEquals(9, radio.getCurrentChannel());
     }
 
 

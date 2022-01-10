@@ -49,15 +49,22 @@ public class Radio {
     }
 
     public void putNextChannel() {
-        if (currentChannel < 9) {
+        if (currentChannel <= 9) {
             currentChannel++;
+            if (currentChannel >= 10) {
+                currentChannel = 0;
+            }
+
         }
+
     }
 
     public void putPreviousChannel() {
-        if (currentChannel > 0) {
-            currentChannel--;
+        currentChannel--;
+        if (currentChannel < 0) {
+            currentChannel = 9;
         }
+
     }
 
 

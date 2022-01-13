@@ -49,13 +49,12 @@ public class Radio {
     }
 
     public void putNextChannel() {
-        if (currentChannel <= 9) {
-            currentChannel++;
-            if (currentChannel > 9) {
-                currentChannel = 0;
+        currentChannel++;
+        if (currentChannel > 9) {
+            currentChannel = 0;
             }
 
-        }
+
 
     }
 

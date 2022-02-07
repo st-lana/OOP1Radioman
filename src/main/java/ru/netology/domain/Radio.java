@@ -1,9 +1,12 @@
 package ru.netology.domain;
 
 public class Radio {
+
     private int channelNumber = 10;
     private int currentChannel;
     private int currentVolume;
+
+
 
     public Radio() {
     }
@@ -11,6 +14,8 @@ public class Radio {
         this.channelNumber = channelNumber;
         this.currentChannel = currentChannel;
         this.currentVolume = currentVolume;
+
+
     }
 
     public int getCurrentChannel() {
@@ -20,6 +25,22 @@ public class Radio {
     public int getCurrentVolume() {
         return currentVolume;
     }
+
+    public int getChannelNumber() {
+        return channelNumber;
+    }
+
+    public void setChannelNumber(int newChannelNumber) {
+        if (newChannelNumber > 8) {
+            return;
+        }
+        if (newChannelNumber < 0) {
+            return;
+        }
+        this.channelNumber = newChannelNumber;
+    }
+
+
 
     public void setCurrentVolume(int currentVolume) {
         if(currentVolume > 99) {
@@ -31,15 +52,47 @@ public class Radio {
         this.currentVolume = currentVolume;
     }
 
-    public void setCurrentChannel(int CurrentChannel) {
-        if(currentChannel < 0) {
+    public void setCurrentChannel(int newCurrentChannel) {
+        if(newCurrentChannel < 0) {
             return;
         }
-        if(currentChannel > 9) {
+        if(newCurrentChannel > 9) {
             return;
         }
-        this.currentChannel = currentChannel;
+        this.currentChannel = newCurrentChannel;
     }
+
+    public void increaseVolume1point() {
+        if (currentVolume < 10) {
+            currentVolume = currentVolume + 1;
+        }
+    }
+
+    public void decreaseVolume1point() {
+        if (currentVolume > 0) {
+            currentVolume--;
+        }
+    }
+
+    public void putNextChannel() {
+        currentChannel++;
+        if (currentChannel > 9) {
+            currentChannel = 0;
+        }
+
+
+
+    }
+
+    public void putPreviousChannel() {
+        currentChannel--;
+        if (currentChannel < 0) {
+            currentChannel = 9;
+        }
+
+    }
+
+
 
 
 

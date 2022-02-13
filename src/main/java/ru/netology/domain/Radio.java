@@ -7,15 +7,11 @@ public class Radio {
     private int currentVolume;
 
 
-
     public Radio() {
     }
-    public Radio(int channelNumber, int currentChannel, int currentVolume) {
+
+    public Radio(int channelNumber) {
         this.channelNumber = channelNumber;
-        this.currentChannel = currentChannel;
-        this.currentVolume = currentVolume;
-
-
     }
 
     public int getCurrentChannel() {
@@ -30,40 +26,31 @@ public class Radio {
         return channelNumber;
     }
 
-    public void setChannelNumber(int newChannelNumber) {
-        if (newChannelNumber > 8) {
-            return;
-        }
-        if (newChannelNumber < 0) {
-            return;
-        }
-        this.channelNumber = newChannelNumber;
-    }
-
-
 
     public void setCurrentVolume(int currentVolume) {
-        if(currentVolume > 99) {
+        if (currentVolume > 99) {
             return;
         }
-        if(currentVolume < 0) {
+        if (currentVolume < 0) {
             return;
         }
         this.currentVolume = currentVolume;
     }
 
     public void setCurrentChannel(int newCurrentChannel) {
-        if(newCurrentChannel < 0) {
+        int maxChannel = channelNumber - 1;
+        if (newCurrentChannel < 0) {
             return;
         }
-        if(newCurrentChannel > 9) {
-            return;
+        if (newCurrentChannel > maxChannel) {
+            newCurrentChannel = maxChannel;
         }
         this.currentChannel = newCurrentChannel;
+
     }
 
     public void increaseVolume1point() {
-        if (currentVolume < 10) {
+        if (currentVolume < 99) {
             currentVolume = currentVolume + 1;
         }
     }
@@ -75,35 +62,23 @@ public class Radio {
     }
 
     public void putNextChannel() {
+        int maxChannel = channelNumber - 1;
         currentChannel++;
-        if (currentChannel > 9) {
+        if (currentChannel > maxChannel) {
             currentChannel = 0;
-        }
 
+        }
 
 
     }
 
     public void putPreviousChannel() {
+        int maxChannel = channelNumber - 1;
         currentChannel--;
         if (currentChannel < 0) {
-            currentChannel = 9;
+            currentChannel = maxChannel;
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
